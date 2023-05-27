@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 const MovieDetailsStyled = styled.div`
-  display: flex;
   margin-top: 20px;
+
+  & .content-wrapper {
+    display: flex;
+
+    margin-top: 20px;
+  }
 
   & .poster-wrapper {
     width: 185px;

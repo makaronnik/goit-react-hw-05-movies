@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 import MoviesListStyled from './MoviesListStyled';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const MoviesList = ({ isLoading, movies }) => {
+  const location = useLocation();
+
   return (
     <MoviesListStyled>
       {isLoading ? (
@@ -13,7 +15,9 @@ const MoviesList = ({ isLoading, movies }) => {
         <ul>
           {movies.map(({ id, title }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`}>{title}</Link>
+              <Link to={`/movies/${id}`} state={location}>
+                {title}
+              </Link>
             </li>
           ))}
         </ul>
