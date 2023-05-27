@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/api';
 import { toast } from 'react-toastify';
+import { Suspense } from 'react';
+import { MoonLoader } from 'react-spinners';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation';
 
@@ -61,7 +63,13 @@ const MovieDetailsPage = () => {
           </li>
         </ul>
       </AdditionalInformation>
-      <Outlet />
+      <Suspense
+        fallback={
+          <MoonLoader speedMultiplier={0.5} cssOverride={{ margin: 50 }} />
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   );
 };
