@@ -21,3 +21,7 @@ export const searchMovies = async query => {
     },
   });
 };
+
+export const getMovieDetails = async id => {
+  return await api.get(`movie/${id}`);
+};
