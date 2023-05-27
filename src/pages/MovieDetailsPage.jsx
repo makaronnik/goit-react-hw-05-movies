@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/api';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { toast } from 'react-toastify';
+import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation';
 
 const MovieDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,23 @@ const MovieDetailsPage = () => {
     fetchMovie();
   }, [movie, movieId, navigate]);
 
-  return <>{<MovieDetails movie={movie} isLoading={isLoading} />}</>;
+  return (
+    <>
+      {<MovieDetails movie={movie} isLoading={isLoading} />}
+      <AdditionalInformation>
+        <p>Additional information</p>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+      </AdditionalInformation>
+      <Outlet />
+    </>
+  );
 };
 
 export default MovieDetailsPage;

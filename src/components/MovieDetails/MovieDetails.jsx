@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import MovieDetailsStyled from './MovieDetailsStyled';
+import BackButton from 'components/BackButton/BackButton';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import BackButton from 'components/BackButton/BackButton';
 
 const MOVIE_POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w185';
 

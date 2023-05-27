@@ -25,3 +25,11 @@ export const searchMovies = async query => {
 export const getMovieDetails = async id => {
   return await api.get(`movie/${id}`);
 };
+
+export const getMovieCredits = async id => {
+  return await api.get(`movie/${id}/credits`);
+};
+
+export const getMovieReviews = async id => {
+  return await api.get(`movie/${id}/reviews`);
+};
