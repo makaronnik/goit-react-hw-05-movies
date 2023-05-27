@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getTrendingMovies } from '../api/api';
 import { toast } from 'react-toastify';
+import { getTrendingMovies } from '../api/api';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const HomePage = () => {

@@ -1,16 +1,21 @@
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import MovieDetailsStyled from './MovieDetailsStyled';
-import BackButton from 'components/BackButton/BackButton';
 import Skeleton from 'react-loading-skeleton';
+import BackButton from 'components/BackButton/BackButton';
+import MovieDetailsStyled from './MovieDetailsStyled';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const MOVIE_POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w185';
 
 const MovieDetails = ({ movie, isLoading }) => {
+  const location = useLocation();
+  const locationRef = useRef(location);
+
   if (isLoading || !movie) {
     return (
       <MovieDetailsStyled>
-        <BackButton />
+        <BackButton location={locationRef.current} />
         <div className="content-wrapper">
           <div className="poster-wrapper">
             <Skeleton height={278} width={185} />
@@ -28,7 +33,7 @@ const MovieDetails = ({ movie, isLoading }) => {
 
     return (
       <MovieDetailsStyled>
-        <BackButton />
+        <BackButton location={locationRef.current} />
         <div className="content-wrapper">
           <div className="poster-wrapper">
             <img src={`${MOVIE_POSTER_BASE_URL}/${poster_path}`} alt={title} />

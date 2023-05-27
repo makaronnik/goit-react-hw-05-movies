@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
+import { toast } from 'react-toastify';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovies } from 'api/api';
-import { toast } from 'react-toastify';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const MoviesPage = () => {

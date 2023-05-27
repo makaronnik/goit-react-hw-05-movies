@@ -1,9 +1,9 @@
-import Main from 'components/Layout/Main';
-import Header from 'components/Header/Header';
 import { ToastContainer } from 'react-toastify';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
+import Main from 'components/Layout/Main';
+import Header from 'components/Header/Header';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {

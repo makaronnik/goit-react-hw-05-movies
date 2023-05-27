@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const ACTOR_PHOTO_BASE_URL = 'https://image.tmdb.org/t/p/w92';
 
-export const Cast = () => {
+const Cast = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [credits, setCredits] = useState();
   const { movieId } = useParams();
@@ -41,29 +41,37 @@ export const Cast = () => {
     fetchCredits();
   }, [movieId, credits]);
 
-  return isLoading ? (
-    <ul>
-      {[1, 2, 3, 4, 5].map((_, key) => (
-        <li key={key}>
-          <Skeleton height={150} width={100} />
-          <Skeleton height={20} width={150} />
-          <Skeleton height={20} width={150} />
-        </li>
-      ))}
-    </ul>
-  ) : (
-    <ul>
-      {credits.map(({ id, name, character, profile_path }) => (
-        <li key={id}>
-          <img
-            src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
-            alt={name}
-            width="100"
-          />
-          <p>{name}</p>
-          <p>{character}</p>
-        </li>
-      ))}
-    </ul>
-  );
+  if (isLoading) {
+    return (
+      <ul>
+        {[1, 2, 3, 4, 5].map((_, key) => (
+          <li key={key}>
+            <Skeleton height={150} width={100} />
+            <Skeleton height={20} width={150} />
+            <Skeleton height={20} width={150} />
+          </li>
+        ))}
+      </ul>
+    );
+  } else if (!credits.length) {
+    return <p>We don't have any cast for this movie</p>;
+  } else {
+    return (
+      <ul>
+        {credits.map(({ id, name, character, profile_path }) => (
+          <li key={id}>
+            <img
+              src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
+              alt={name}
+              width="100"
+            />
+            <p>{name}</p>
+            <p>{character}</p>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 };
+
+export default Cast;

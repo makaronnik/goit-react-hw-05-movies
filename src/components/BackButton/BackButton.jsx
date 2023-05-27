@@ -1,9 +1,8 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import BackButtonStyled from './BackButtonStyled';
-import { useLocation, useNavigate } from 'react-router-dom';
 
-const BackButton = () => {
-  const location = useLocation();
+const BackButton = ({ location }) => {
   const navigate = useNavigate();
 
   return (
@@ -14,6 +13,16 @@ const BackButton = () => {
       &larr; Go back
     </BackButtonStyled>
   );
+};
+
+BackButton.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      from: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default BackButton;

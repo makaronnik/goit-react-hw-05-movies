@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/api';
-import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { toast } from 'react-toastify';
+import MovieDetails from 'components/MovieDetails/MovieDetails';
 import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation';
 
 const MovieDetailsPage = () => {
